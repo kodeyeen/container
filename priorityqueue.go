@@ -26,7 +26,7 @@ func (pq *PriorityQueue[T]) Init(items ...T) {
 	heap.Init(pq.core)
 }
 
-// Enqueue pushes an item to the queue. The complexity is O(nlogn).
+// Enqueue pushes items to the queue. The complexity is O(nlogn).
 func (pq *PriorityQueue[T]) Enqueue(items ...T) {
 	for _, item := range items {
 		heap.Push(pq.core, item)
