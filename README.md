@@ -1,7 +1,7 @@
 # priorityqueue
 
 A lightweight generic priority queue implementation in Go based on the example shown in the [heap package documentation](https://pkg.go.dev/container/heap#example-package-PriorityQueue).
-The goal is to provide a clean user friendly container and encapsulate the usage of the heap package.
+The goal is to provide a clean user friendly container and encapsulate the usage of the heap functions.
 
 ## Installation
 
