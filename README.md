@@ -1,12 +1,12 @@
-# priorityqueue
+# container
 
-A lightweight generic priority queue implementation in Go based on the example shown in the [heap package documentation](https://pkg.go.dev/container/heap#example-package-PriorityQueue).
-The goal is to provide a clean user friendly container and encapsulate the usage of the heap functions.
+A set of containers that I had to implement during solving Leetcode problems.
+Also it serves as my personal data structures cheatsheet.
 
 ## Installation
 
 ```shell
-go get github.com/kodeyeen/priorityqueue
+go get github.com/kodeyeen/container
 ```
 
 ## Quickstart
@@ -18,7 +18,7 @@ import (
 	"cmp"
 	"fmt"
 
-	"github.com/kodeyeen/priorityqueue"
+	"github.com/kodeyeen/container/queue/priorityqueue"
 )
 
 func main() {
