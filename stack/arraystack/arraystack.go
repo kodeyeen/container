@@ -24,13 +24,13 @@ func (s *ArrayStack[T]) Push(item T) {
 }
 
 func (s *ArrayStack[T]) Pop() (T, bool) {
-	if len(s.items) == 0 {
+	if s.Len() == 0 {
 		var t T
 		return t, false
 	}
 
-	lastItem := s.items[len(s.items)-1]
-	s.items = s.items[:len(s.items)-1]
+	lastItem := s.items[s.Len()-1]
+	s.items = s.items[:s.Len()-1]
 	return lastItem, true
 }
 
