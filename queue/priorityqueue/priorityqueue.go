@@ -8,7 +8,7 @@ type PriorityQueue[T any] struct {
 	core *core[T]
 }
 
-// New creates a queue.
+// New creates a priority queue.
 func New[T any](comparator Comparator[T]) *PriorityQueue[T] {
 	pq := &PriorityQueue[T]{
 		core: &core[T]{
@@ -34,13 +34,23 @@ func (pq *PriorityQueue[T]) Enqueue(items ...T) {
 }
 
 // Dequeue pops an item from the queue. The complexity is O(nlogn).
-func (pq *PriorityQueue[T]) Dequeue() T {
-	return heap.Pop(pq.core).(T)
+func (pq *PriorityQueue[T]) Dequeue() (T, bool) {
+	if pq.Len() == 0 {
+		var t T
+		return t, false
+	}
+
+	return heap.Pop(pq.core).(T), true
 }
 
 // Peek returns the first item without deleting it from the queue. The complexity is O(1).
-func (pq *PriorityQueue[T]) Peek() T {
-	return pq.core.items[0]
+func (pq *PriorityQueue[T]) Peek() (T, bool) {
+	if pq.Len() == 0 {
+		var t T
+		return t, false
+	}
+
+	return pq.core.items[0], true
 }
 
 // Len returns the number of items in the queue. The complexity is O(1).
