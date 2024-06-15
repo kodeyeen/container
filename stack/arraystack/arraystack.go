@@ -14,8 +14,8 @@ func (s *ArrayStack[T]) Len() int {
 	return len(s.items)
 }
 
-func (s *ArrayStack[T]) Push(item T) {
-	s.items = append(s.items, item)
+func (s *ArrayStack[T]) Push(items ...T) {
+	s.items = append(s.items, items...)
 }
 
 func (s *ArrayStack[T]) Pop() (T, bool) {
