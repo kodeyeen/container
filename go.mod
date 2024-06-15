@@ -1,3 +1,3 @@
-module github.com/kodeyeen/priorityqueue
+module github.com/kodeyeen/container
 
 go 1.22.3
