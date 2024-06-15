@@ -10,13 +10,8 @@ func New[T any](maxLen int) *ArrayStack[T] {
 	}
 }
 
-func (s *ArrayStack[T]) Peek() (T, bool) {
-	if len(s.items) == 0 {
-		var t T
-		return t, false
-	}
-
-	return s.items[len(s.items)-1], true
+func (s *ArrayStack[T]) Len() int {
+	return len(s.items)
 }
 
 func (s *ArrayStack[T]) Push(item T) {
@@ -34,6 +29,11 @@ func (s *ArrayStack[T]) Pop() (T, bool) {
 	return lastItem, true
 }
 
-func (s *ArrayStack[T]) Len() int {
-	return len(s.items)
+func (s *ArrayStack[T]) Peek() (T, bool) {
+	if len(s.items) == 0 {
+		var t T
+		return t, false
+	}
+
+	return s.items[len(s.items)-1], true
 }
