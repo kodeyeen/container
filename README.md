@@ -27,10 +27,13 @@ func main() {
 	pq.Init(44, 22, 11, 33)
 	pq.Enqueue(-55)
 
-	fmt.Printf("Minimum value is %d\n", pq.Peek())
+	min, ok := pq.Peek()
+	if ok {
+		fmt.Printf("Minimum value is %d\n", min)
+	}
 
 	for pq.Len() > 0 {
-		item := pq.Dequeue()
+		item, _ := pq.Dequeue()
 
 		fmt.Println(item)
 	}
