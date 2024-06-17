@@ -61,6 +61,26 @@ func (s HashSet[E]) Difference(other HashSet[E]) HashSet[E] {
 	return result
 }
 
+func (s HashSet[E]) IsSubSet(other HashSet[E]) bool {
+	for elem := range s {
+		if !other.Contains(elem) {
+			return false
+		}
+	}
+
+	return true
+}
+
+func (s HashSet[E]) IsSuperSet(other HashSet[E]) bool {
+	for elem := range other {
+		if !s.Contains(elem) {
+			return false
+		}
+	}
+
+	return true
+}
+
 func (s HashSet[E]) Clear() {
 	clear(s)
 }
