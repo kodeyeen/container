@@ -1,5 +1,7 @@
 package hashset
 
+import "iter"
+
 type HashSet[E comparable] map[E]struct{}
 
 func New[E comparable](capacity int) HashSet[E] {
@@ -79,6 +81,16 @@ func (s HashSet[E]) IsSuperSet(other HashSet[E]) bool {
 	}
 
 	return true
+}
+
+func (s HashSet[E]) All() iter.Seq[E] {
+	return func(yield func(E) bool) {
+		for elem := range s {
+			if !yield(elem) {
+				return
+			}
+		}
+	}
 }
 
 func (s HashSet[E]) Clear() {
