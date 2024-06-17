@@ -4,12 +4,12 @@ import (
 	"container/heap"
 )
 
-type PriorityQueue[E any] struct {
+type PriorityQueue[E comparable] struct {
 	core *core[E]
 }
 
 // New creates a priority queue.
-func New[E any](comparator Comparator[E]) *PriorityQueue[E] {
+func New[E comparable](comparator Comparator[E]) *PriorityQueue[E] {
 	pq := &PriorityQueue[E]{
 		core: &core[E]{
 			comparator: comparator,

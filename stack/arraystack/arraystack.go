@@ -1,10 +1,10 @@
 package arraystack
 
-type ArrayStack[E any] struct {
+type ArrayStack[E comparable] struct {
 	elems []E
 }
 
-func New[E any](capacity int) *ArrayStack[E] {
+func New[E comparable](capacity int) *ArrayStack[E] {
 	return &ArrayStack[E]{
 		elems: make([]E, 0, capacity),
 	}

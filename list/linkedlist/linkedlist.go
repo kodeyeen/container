@@ -1,7 +1,7 @@
 package linkedlist
 
 // Element is an element of a linked list.
-type Element[T any] struct {
+type Element[T comparable] struct {
 	// Next and previous pointers in the doubly-linked list of elements.
 	// To simplify the implementation, internally a list l is implemented
 	// as a ring, such that &l.root is both the next element of the last
@@ -34,7 +34,7 @@ func (e *Element[T]) Prev() *Element[T] {
 
 // List represents a doubly linked list.
 // The zero value for List is an empty list ready to use.
-type List[T any] struct {
+type List[T comparable] struct {
 	root Element[T] // sentinel list element, only &root, root.prev, and root.next are used
 	len  int        // current list length excluding (this) sentinel element
 }
@@ -48,7 +48,7 @@ func (l *List[T]) Init() *List[T] {
 }
 
 // New returns an initialized list.
-func New[T any]() *List[T] {
+func New[T comparable]() *List[T] {
 	return new(List[T]).Init()
 }
 
