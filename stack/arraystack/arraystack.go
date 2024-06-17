@@ -1,27 +1,27 @@
 package arraystack
 
-type ArrayStack[T any] struct {
-	elems []T
+type ArrayStack[E any] struct {
+	elems []E
 }
 
-func New[T any](maxLen int) *ArrayStack[T] {
-	return &ArrayStack[T]{
-		elems: make([]T, 0, maxLen),
+func New[E any](maxLen int) *ArrayStack[E] {
+	return &ArrayStack[E]{
+		elems: make([]E, 0, maxLen),
 	}
 }
 
-func (s *ArrayStack[T]) Len() int {
+func (s *ArrayStack[E]) Len() int {
 	return len(s.elems)
 }
 
-func (s *ArrayStack[T]) Push(elems ...T) {
+func (s *ArrayStack[E]) Push(elems ...E) {
 	s.elems = append(s.elems, elems...)
 }
 
-func (s *ArrayStack[T]) Pop() (T, bool) {
+func (s *ArrayStack[E]) Pop() (E, bool) {
 	if s.Len() == 0 {
-		var t T
-		return t, false
+		var e E
+		return e, false
 	}
 
 	lastElem := s.elems[s.Len()-1]
@@ -29,10 +29,10 @@ func (s *ArrayStack[T]) Pop() (T, bool) {
 	return lastElem, true
 }
 
-func (s *ArrayStack[T]) Peek() (T, bool) {
+func (s *ArrayStack[E]) Peek() (E, bool) {
 	if len(s.elems) == 0 {
-		var t T
-		return t, false
+		var e E
+		return e, false
 	}
 
 	return s.elems[len(s.elems)-1], true

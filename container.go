@@ -1,5 +1,5 @@
 package container
 
-type Container[T any] interface {
+type Container[E any] interface {
 	Len() int
 }

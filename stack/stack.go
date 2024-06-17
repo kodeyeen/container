@@ -2,9 +2,9 @@ package stack
 
 import "github.com/kodeyeen/container"
 
-type Stack[T any] interface {
-	container.Container[T]
-	Push(elems ...T)
-	Pop() (elem T, ok bool)
-	Peek() (elem T, ok bool)
+type Stack[E any] interface {
+	container.Container[E]
+	Push(elems ...E)
+	Pop() (elem E, ok bool)
+	Peek() (elem E, ok bool)
 }
