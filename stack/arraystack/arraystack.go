@@ -10,7 +10,7 @@ func New[T any](maxLen int) *ArrayStack[T] {
 	}
 }
 
-func (s *ArrayStack[T]) Len() int {
+func (s *ArrayStack[T]) Size() int {
 	return len(s.items)
 }
 
@@ -19,13 +19,13 @@ func (s *ArrayStack[T]) Push(items ...T) {
 }
 
 func (s *ArrayStack[T]) Pop() (T, bool) {
-	if s.Len() == 0 {
+	if s.Size() == 0 {
 		var t T
 		return t, false
 	}
 
-	lastItem := s.items[s.Len()-1]
-	s.items = s.items[:s.Len()-1]
+	lastItem := s.items[s.Size()-1]
+	s.items = s.items[:s.Size()-1]
 	return lastItem, true
 }
 
