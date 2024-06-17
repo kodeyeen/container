@@ -28,8 +28,8 @@ func (l ArrayList[E]) Map(mapping func(E) E) ArrayList[E] {
 	return mapped
 }
 
-func (l *ArrayList[E]) Contains(elem E) bool {
-	return slices.Contains(*l, elem)
+func (l ArrayList[E]) Contains(elem E) bool {
+	return slices.Contains(l, elem)
 }
 
 func (l *ArrayList[E]) Clear() {
