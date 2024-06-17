@@ -4,7 +4,7 @@ import "github.com/kodeyeen/container"
 
 type Queue[T any] interface {
 	container.Container[T]
-	Enqueue(items ...T)
-	Dequeue() (item T, ok bool)
-	Peek() (item T, ok bool)
+	Enqueue(elems ...T)
+	Dequeue() (elem T, ok bool)
+	Peek() (elem T, ok bool)
 }

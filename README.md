@@ -33,9 +33,9 @@ func main() {
 	}
 
 	for pq.Len() > 0 {
-		item, _ := pq.Dequeue()
+		elem, _ := pq.Dequeue()
 
-		fmt.Println(item)
+		fmt.Println(elem)
 	}
 }
 ```

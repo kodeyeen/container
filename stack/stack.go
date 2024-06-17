@@ -4,7 +4,7 @@ import "github.com/kodeyeen/container"
 
 type Stack[T any] interface {
 	container.Container[T]
-	Push(items ...T)
-	Pop() (item T, ok bool)
-	Peek() (item T, ok bool)
+	Push(elems ...T)
+	Pop() (elem T, ok bool)
+	Peek() (elem T, ok bool)
 }

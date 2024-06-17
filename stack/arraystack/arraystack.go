@@ -1,21 +1,21 @@
 package arraystack
 
 type ArrayStack[T any] struct {
-	items []T
+	elems []T
 }
 
 func New[T any](maxLen int) *ArrayStack[T] {
 	return &ArrayStack[T]{
-		items: make([]T, 0, maxLen),
+		elems: make([]T, 0, maxLen),
 	}
 }
 
 func (s *ArrayStack[T]) Len() int {
-	return len(s.items)
+	return len(s.elems)
 }
 
-func (s *ArrayStack[T]) Push(items ...T) {
-	s.items = append(s.items, items...)
+func (s *ArrayStack[T]) Push(elems ...T) {
+	s.elems = append(s.elems, elems...)
 }
 
 func (s *ArrayStack[T]) Pop() (T, bool) {
@@ -24,16 +24,16 @@ func (s *ArrayStack[T]) Pop() (T, bool) {
 		return t, false
 	}
 
-	lastItem := s.items[s.Len()-1]
-	s.items = s.items[:s.Len()-1]
-	return lastItem, true
+	lastElem := s.elems[s.Len()-1]
+	s.elems = s.elems[:s.Len()-1]
+	return lastElem, true
 }
 
 func (s *ArrayStack[T]) Peek() (T, bool) {
-	if len(s.items) == 0 {
+	if len(s.elems) == 0 {
 		var t T
 		return t, false
 	}
 
-	return s.items[len(s.items)-1], true
+	return s.elems[len(s.elems)-1], true
 }
