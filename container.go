@@ -1,6 +1,9 @@
 package container
 
+import "fmt"
+
 type Container[E any] interface {
-	Len() int
 	Clear()
+	Len() int
+	fmt.Stringer
 }

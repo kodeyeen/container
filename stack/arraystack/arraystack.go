@@ -10,10 +10,6 @@ func New[E any](maxLen int) *ArrayStack[E] {
 	}
 }
 
-func (s *ArrayStack[E]) Len() int {
-	return len(s.elems)
-}
-
 func (s *ArrayStack[E]) Push(elems ...E) {
 	s.elems = append(s.elems, elems...)
 }
@@ -36,4 +32,16 @@ func (s *ArrayStack[E]) Peek() (E, bool) {
 	}
 
 	return s.elems[len(s.elems)-1], true
+}
+
+func (s *ArrayStack[E]) Clear() {
+	clear(s.elems)
+}
+
+func (s *ArrayStack[E]) Len() int {
+	return len(s.elems)
+}
+
+func (s *ArrayStack[E]) String() string {
+	return ""
 }

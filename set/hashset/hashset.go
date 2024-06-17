@@ -6,14 +6,6 @@ func New[E comparable](capacity int) HashSet[E] {
 	return make(map[E]struct{}, capacity)
 }
 
-func (s HashSet[E]) Len() int {
-	return len(s)
-}
-
-func (s HashSet[E]) Clear() {
-	clear(s)
-}
-
 func (s HashSet[E]) Add(elems ...E) {
 	for _, elem := range elems {
 		s[elem] = struct{}{}
@@ -55,4 +47,16 @@ func (s HashSet[E]) Intersection(other HashSet[E]) HashSet[E] {
 	}
 
 	return result
+}
+
+func (s HashSet[E]) Clear() {
+	clear(s)
+}
+
+func (s HashSet[E]) Len() int {
+	return len(s)
+}
+
+func (s HashSet[E]) String() string {
+	return ""
 }

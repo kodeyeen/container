@@ -26,11 +26,6 @@ func (pq *PriorityQueue[E]) Init(elems ...E) {
 	heap.Init(pq.core)
 }
 
-// Len returns the number of elements in the queue. The complexity is O(1).
-func (pq *PriorityQueue[E]) Len() int {
-	return len(pq.core.elems)
-}
-
 // Enqueue pushes elements to the queue. The complexity is O(nlogn).
 func (pq *PriorityQueue[E]) Enqueue(elems ...E) {
 	for _, elem := range elems {
@@ -56,4 +51,17 @@ func (pq *PriorityQueue[E]) Peek() (E, bool) {
 	}
 
 	return pq.core.elems[0], true
+}
+
+func (pq *PriorityQueue[E]) Clear() {
+	clear(pq.core.elems)
+}
+
+// Len returns the number of elements in the queue. The complexity is O(1).
+func (pq *PriorityQueue[E]) Len() int {
+	return len(pq.core.elems)
+}
+
+func (pq *PriorityQueue[E]) String() string {
+	return ""
 }
