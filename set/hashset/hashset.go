@@ -49,6 +49,18 @@ func (s HashSet[E]) Intersection(other HashSet[E]) HashSet[E] {
 	return result
 }
 
+func (s HashSet[E]) Difference(other HashSet[E]) HashSet[E] {
+	result := New[E](len(s))
+
+	for elem := range s {
+		if !other.Contains(elem) {
+			result.Add(elem)
+		}
+	}
+
+	return result
+}
+
 func (s HashSet[E]) Clear() {
 	clear(s)
 }
