@@ -27,7 +27,7 @@ func (pq *PriorityQueue[T]) Init(items ...T) {
 }
 
 // Len returns the number of items in the queue. The complexity is O(1).
-func (pq *PriorityQueue[T]) Size() int {
+func (pq *PriorityQueue[T]) Len() int {
 	return len(pq.core.items)
 }
 
@@ -40,7 +40,7 @@ func (pq *PriorityQueue[T]) Enqueue(items ...T) {
 
 // Dequeue pops an item from the queue. The complexity is O(nlogn).
 func (pq *PriorityQueue[T]) Dequeue() (T, bool) {
-	if pq.Size() == 0 {
+	if pq.Len() == 0 {
 		var t T
 		return t, false
 	}
@@ -50,7 +50,7 @@ func (pq *PriorityQueue[T]) Dequeue() (T, bool) {
 
 // Peek returns the first item without deleting it from the queue. The complexity is O(1).
 func (pq *PriorityQueue[T]) Peek() (T, bool) {
-	if pq.Size() == 0 {
+	if pq.Len() == 0 {
 		var t T
 		return t, false
 	}
