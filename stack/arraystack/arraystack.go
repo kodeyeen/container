@@ -4,9 +4,9 @@ type ArrayStack[E any] struct {
 	elems []E
 }
 
-func New[E any](maxLen int) *ArrayStack[E] {
+func New[E any](capacity int) *ArrayStack[E] {
 	return &ArrayStack[E]{
-		elems: make([]E, 0, maxLen),
+		elems: make([]E, 0, capacity),
 	}
 }
 
