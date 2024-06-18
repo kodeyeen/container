@@ -35,7 +35,7 @@ func (s *ArrayStack[E]) Peek() (E, bool) {
 }
 
 func (s *ArrayStack[E]) Clear() {
-	clear(s.elems)
+	s.elems = make([]E, 0)
 }
 
 func (s *ArrayStack[E]) Len() int {
