@@ -33,7 +33,7 @@ func (l ArrayList[E]) Contains(elem E) bool {
 }
 
 func (l *ArrayList[E]) Clear() {
-	clear(*l)
+	*l = make(ArrayList[E], 0)
 }
 
 func (l ArrayList[E]) Len() int {
