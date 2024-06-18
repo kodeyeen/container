@@ -54,7 +54,7 @@ func (pq *PriorityQueue[E]) Peek() (E, bool) {
 }
 
 func (pq *PriorityQueue[E]) Clear() {
-	clear(pq.core.elems)
+	pq.core.elems = make([]E, 0)
 }
 
 // Len returns the number of elements in the queue. The complexity is O(1).
