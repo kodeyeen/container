@@ -1,6 +1,7 @@
 package arraylist
 
 import (
+	"iter"
 	"slices"
 )
 
@@ -18,14 +19,14 @@ func (l *ArrayList[E]) Insert(i int, elems ...E) {
 	*l = slices.Insert(*l, i, elems...)
 }
 
-func (l ArrayList[E]) Map(mapping func(E) E) ArrayList[E] {
-	mapped := New[E](len(l), len(l))
-
-	for _, elem := range l {
-		mapped.Append(mapping(elem))
+func (l ArrayList[E]) Map(mapping func(E) E) iter.Seq[E] {
+	return func(yield func(E) bool) {
+		for _, elem := range l {
+			if !yield(mapping(elem)) {
+				return
+			}
+		}
 	}
-
-	return mapped
 }
 
 func (l ArrayList[E]) Contains(elem E) bool {
