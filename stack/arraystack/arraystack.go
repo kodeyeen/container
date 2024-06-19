@@ -26,7 +26,7 @@ func (s *ArrayStack[E]) Pop() (E, bool) {
 }
 
 func (s *ArrayStack[E]) Peek() (E, bool) {
-	if len(s.elems) == 0 {
+	if s.Len() == 0 {
 		var e E
 		return e, false
 	}
