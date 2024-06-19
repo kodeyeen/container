@@ -35,7 +35,7 @@ func (pq *PriorityQueue[E]) Enqueue(elems ...E) {
 
 // Dequeue pops an element from the queue. The complexity is O(nlogn).
 func (pq *PriorityQueue[E]) Dequeue() (E, bool) {
-	if pq.Len() == 0 {
+	if len(pq.core.elems) == 0 {
 		var e E
 		return e, false
 	}

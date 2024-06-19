@@ -15,18 +15,18 @@ func (s *ArrayStack[E]) Push(elems ...E) {
 }
 
 func (s *ArrayStack[E]) Pop() (E, bool) {
-	if s.Len() == 0 {
+	if len(s.elems) == 0 {
 		var e E
 		return e, false
 	}
 
-	lastElem := s.elems[s.Len()-1]
-	s.elems = s.elems[:s.Len()-1]
+	lastElem := s.elems[len(s.elems)-1]
+	s.elems = s.elems[:len(s.elems)-1]
 	return lastElem, true
 }
 
 func (s *ArrayStack[E]) Peek() (E, bool) {
-	if s.Len() == 0 {
+	if len(s.elems) == 0 {
 		var e E
 		return e, false
 	}
