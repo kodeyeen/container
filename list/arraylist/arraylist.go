@@ -11,6 +11,10 @@ func New[E comparable](length, capacity int) ArrayList[E] {
 	return make([]E, length, capacity)
 }
 
+func (l *ArrayList[E]) Prepend(elems ...E) {
+	*l = slices.Insert(*l, 0, elems...)
+}
+
 func (l *ArrayList[E]) Append(elems ...E) {
 	*l = append(*l, elems...)
 }
@@ -31,6 +35,18 @@ func (l ArrayList[E]) Map(mapping func(E) E) iter.Seq[E] {
 
 func (l ArrayList[E]) Contains(elem E) bool {
 	return slices.Contains(l, elem)
+}
+
+func (l ArrayList[E]) ContainsFunc(elem E, f func(E) bool) bool {
+	return slices.ContainsFunc(l, f)
+}
+
+func (l *ArrayList[E]) Delete(i, j int) {
+	*l = slices.Delete(*l, i, j)
+}
+
+func (l *ArrayList[E]) DeleteFunc(del func(E) bool) {
+	*l = slices.DeleteFunc(*l, del)
 }
 
 func (l *ArrayList[E]) Clear() {
