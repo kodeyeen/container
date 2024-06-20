@@ -2,7 +2,7 @@ package container
 
 import "fmt"
 
-type Container[E comparable] interface {
+type Container[E any] interface {
 	Clear()
 	Len() int
 
