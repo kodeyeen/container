@@ -32,16 +32,16 @@ func (h *BinHeap[E]) Push(elem E) {
 }
 
 func (h *BinHeap[E]) Pop() (E, bool) {
-	if len(h.elems) == 0 {
+	n := len(h.elems)
+
+	if n == 0 {
 		var e E
 		return e, false
 	}
 
-	n := len(h.elems) - 1
+	h.swap(0, n-1)
 
-	h.swap(0, n)
-
-	h.down(0, n)
+	h.down(0, n-1)
 
 	elem := h.elems[n-1]
 	h.elems = h.elems[0 : n-1]
