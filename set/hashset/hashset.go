@@ -1,6 +1,8 @@
 package hashset
 
-import "iter"
+import (
+	"iter"
+)
 
 type HashSet[E comparable] struct {
 	elems map[E]struct{}
