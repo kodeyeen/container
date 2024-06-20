@@ -26,9 +26,11 @@ func (h *BinHeap[E]) Init(elems ...E) {
 	}
 }
 
-func (h *BinHeap[E]) Push(elem E) {
-	h.elems = append(h.elems, elem)
-	h.up(len(h.elems) - 1)
+func (h *BinHeap[E]) Push(elems ...E) {
+	for _, elem := range elems {
+		h.elems = append(h.elems, elem)
+		h.up(len(h.elems) - 1)
+	}
 }
 
 func (h *BinHeap[E]) Pop() (E, bool) {
