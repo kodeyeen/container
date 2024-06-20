@@ -11,11 +11,9 @@ type PriorityQueue[E comparable] struct {
 
 // New creates a priority queue.
 func New[E comparable](cmp cmp.Comparator[E]) *PriorityQueue[E] {
-	pq := &PriorityQueue[E]{
+	return &PriorityQueue[E]{
 		heap: binheap.New(cmp),
 	}
-
-	return pq
 }
 
 // Init initializes the queue with the given elements or clears it if no elements are provided. The complexity is O(n).
