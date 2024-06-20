@@ -5,14 +5,14 @@ import (
 )
 
 type BinHeap[E any] struct {
-	elems []E
-	cmp   cmp.Comparator[E]
+	elems      []E
+	comparator cmp.Comparator[E]
 }
 
-func New[E any](cmp cmp.Comparator[E]) *BinHeap[E] {
+func New[E any](comparator cmp.Comparator[E]) *BinHeap[E] {
 	return &BinHeap[E]{
-		elems: make([]E, 0),
-		cmp:   cmp,
+		elems:      make([]E, 0),
+		comparator: comparator,
 	}
 }
 
@@ -58,7 +58,7 @@ func (h *BinHeap[E]) Peek() (E, bool) {
 }
 
 func (h *BinHeap[E]) less(i, j int) bool {
-	return h.cmp(h.elems[i], h.elems[j]) == -1
+	return h.comparator(h.elems[i], h.elems[j]) == -1
 }
 
 func (h *BinHeap[E]) swap(i, j int) {
@@ -102,4 +102,8 @@ func (h *BinHeap[E]) Clear() {
 
 func (h *BinHeap[E]) Len() int {
 	return len(h.elems)
+}
+
+func (h *BinHeap[E]) String() string {
+	return ""
 }

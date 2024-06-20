@@ -10,9 +10,9 @@ type PriorityQueue[E comparable] struct {
 }
 
 // New creates a priority queue.
-func New[E comparable](cmp cmp.Comparator[E]) *PriorityQueue[E] {
+func New[E comparable](comparator cmp.Comparator[E]) *PriorityQueue[E] {
 	return &PriorityQueue[E]{
-		heap: binheap.New(cmp),
+		heap: binheap.New(comparator),
 	}
 }
 
