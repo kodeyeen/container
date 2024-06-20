@@ -12,7 +12,7 @@ type PriorityQueue[E comparable] struct {
 // New creates a priority queue.
 func New[E comparable](cmp cmp.Comparator[E]) *PriorityQueue[E] {
 	pq := &PriorityQueue[E]{
-		heap: binheap.New[E](cmp),
+		heap: binheap.New(cmp),
 	}
 
 	return pq
