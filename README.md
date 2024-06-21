@@ -1,7 +1,7 @@
 # container
 
-A set of containers that I had to implement during solving Leetcode problems.
-Also it serves as my personal data structures cheatsheet.
+This is an extended version of the Go builtin container package.
+There are already similar ones, for example, [gods](https://github.com/emirpasic/gods), but I don't like it for being too Java-ish.
 
 ## Installation
 
