@@ -18,7 +18,7 @@ import (
 	"cmp"
 	"fmt"
 
-	"github.com/kodeyeen/container/queue/priorityqueue"
+	"github.com/kodeyeen/container/priorityqueue"
 )
 
 func main() {
