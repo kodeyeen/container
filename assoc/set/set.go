@@ -1,37 +1,37 @@
-package hashset
+package set
 
 import (
 	"iter"
 )
 
-type HashSet[E comparable] struct {
+type Set[E comparable] struct {
 	elems map[E]struct{}
 }
 
-func New[E comparable](capacity int) *HashSet[E] {
-	return &HashSet[E]{
+func New[E comparable](capacity int) *Set[E] {
+	return &Set[E]{
 		elems: make(map[E]struct{}, capacity),
 	}
 }
 
-func (s *HashSet[E]) Add(elems ...E) {
+func (s *Set[E]) Add(elems ...E) {
 	for _, elem := range elems {
 		s.elems[elem] = struct{}{}
 	}
 }
 
-func (s *HashSet[E]) Remove(elems ...E) {
+func (s *Set[E]) Remove(elems ...E) {
 	for _, elem := range elems {
 		delete(s.elems, elem)
 	}
 }
 
-func (s *HashSet[E]) Contains(elem E) bool {
+func (s *Set[E]) Contains(elem E) bool {
 	_, ok := s.elems[elem]
 	return ok
 }
 
-func (s *HashSet[E]) Union(other *HashSet[E]) *HashSet[E] {
+func (s *Set[E]) Union(other *Set[E]) *Set[E] {
 	result := New[E](s.Len() + other.Len())
 
 	for elem := range s.elems {
@@ -45,7 +45,7 @@ func (s *HashSet[E]) Union(other *HashSet[E]) *HashSet[E] {
 	return result
 }
 
-func (s *HashSet[E]) Intersection(other *HashSet[E]) *HashSet[E] {
+func (s *Set[E]) Intersection(other *Set[E]) *Set[E] {
 	result := New[E](s.Len() + other.Len())
 
 	for elem := range other.elems {
@@ -57,7 +57,7 @@ func (s *HashSet[E]) Intersection(other *HashSet[E]) *HashSet[E] {
 	return result
 }
 
-func (s *HashSet[E]) Difference(other *HashSet[E]) *HashSet[E] {
+func (s *Set[E]) Difference(other *Set[E]) *Set[E] {
 	result := New[E](s.Len())
 
 	for elem := range s.elems {
@@ -69,7 +69,7 @@ func (s *HashSet[E]) Difference(other *HashSet[E]) *HashSet[E] {
 	return result
 }
 
-func (s *HashSet[E]) IsSubSet(other *HashSet[E]) bool {
+func (s *Set[E]) IsSubSet(other *Set[E]) bool {
 	for elem := range s.elems {
 		if !other.Contains(elem) {
 			return false
@@ -79,7 +79,7 @@ func (s *HashSet[E]) IsSubSet(other *HashSet[E]) bool {
 	return true
 }
 
-func (s *HashSet[E]) IsSuperSet(other *HashSet[E]) bool {
+func (s *Set[E]) IsSuperSet(other *Set[E]) bool {
 	for elem := range other.elems {
 		if !s.Contains(elem) {
 			return false
@@ -89,7 +89,7 @@ func (s *HashSet[E]) IsSuperSet(other *HashSet[E]) bool {
 	return true
 }
 
-func (s *HashSet[E]) All() iter.Seq[E] {
+func (s *Set[E]) All() iter.Seq[E] {
 	return func(yield func(E) bool) {
 		for elem := range s.elems {
 			if !yield(elem) {
@@ -99,14 +99,14 @@ func (s *HashSet[E]) All() iter.Seq[E] {
 	}
 }
 
-func (s *HashSet[E]) Clear() {
+func (s *Set[E]) Clear() {
 	clear(s.elems)
 }
 
-func (s *HashSet[E]) Len() int {
+func (s *Set[E]) Len() int {
 	return len(s.elems)
 }
 
-func (s *HashSet[E]) String() string {
+func (s *Set[E]) String() string {
 	return ""
 }
