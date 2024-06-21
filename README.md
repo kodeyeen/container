@@ -18,11 +18,11 @@ import (
 	"cmp"
 	"fmt"
 
-	"github.com/kodeyeen/container/priorityqueue"
+	"github.com/kodeyeen/container/pqueue"
 )
 
 func main() {
-	pq := priorityqueue.New(cmp.Compare[int])
+	pq := pqueue.New(cmp.Compare[int])
 
 	pq.Init(44, 22, 11, 33)
 	pq.Enqueue(-55)
