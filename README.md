@@ -1,6 +1,6 @@
 # container
 
-This is an extended version of the Go builtin container package.
+This is an extended version of the Go's builtin container package.  
 There are already similar ones, for example, [gods](https://github.com/emirpasic/gods), but I don't like it for being too Java-ish.
 
 ## Installation
