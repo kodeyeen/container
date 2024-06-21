@@ -1,4 +1,4 @@
-package linkedlist
+package list
 
 // Element is an element of a linked list.
 type Element[E any] struct {
@@ -10,7 +10,7 @@ type Element[E any] struct {
 	next, prev *Element[E]
 
 	// The list to which this element belongs.
-	list *LinkedList[E]
+	list *List[E]
 
 	// The value stored with this element.
 	Value E
