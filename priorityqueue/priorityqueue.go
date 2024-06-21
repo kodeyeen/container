@@ -1,18 +1,18 @@
 package priorityqueue
 
 import (
+	"github.com/kodeyeen/container/heap"
 	"github.com/kodeyeen/container/internal/cmp"
-	"github.com/kodeyeen/container/tree/binheap"
 )
 
 type PriorityQueue[E comparable] struct {
-	heap *binheap.BinHeap[E]
+	heap *heap.Heap[E]
 }
 
 // New creates a priority queue.
 func New[E comparable](comparator cmp.Comparator[E]) *PriorityQueue[E] {
 	return &PriorityQueue[E]{
-		heap: binheap.New(comparator),
+		heap: heap.New(comparator),
 	}
 }
 
