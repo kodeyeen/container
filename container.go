@@ -12,6 +12,7 @@ type Container[E any] interface {
 type Dict[K comparable, V any] interface {
 	Get(key K) (val V, ok bool)
 	Set(key K, val V)
+	Delete(key K)
 
 	Container[V]
 }
