@@ -1,20 +1,20 @@
-package arraystack
+package stack
 
-type ArrayStack[E any] struct {
+type Stack[E any] struct {
 	elems []E
 }
 
-func New[E any](capacity int) *ArrayStack[E] {
-	return &ArrayStack[E]{
+func New[E any](capacity int) *Stack[E] {
+	return &Stack[E]{
 		elems: make([]E, 0, capacity),
 	}
 }
 
-func (s *ArrayStack[E]) Push(elems ...E) {
+func (s *Stack[E]) Push(elems ...E) {
 	s.elems = append(s.elems, elems...)
 }
 
-func (s *ArrayStack[E]) Pop() (E, bool) {
+func (s *Stack[E]) Pop() (E, bool) {
 	if len(s.elems) == 0 {
 		var e E
 		return e, false
@@ -25,7 +25,7 @@ func (s *ArrayStack[E]) Pop() (E, bool) {
 	return lastElem, true
 }
 
-func (s *ArrayStack[E]) Peek() (E, bool) {
+func (s *Stack[E]) Peek() (E, bool) {
 	if len(s.elems) == 0 {
 		var e E
 		return e, false
@@ -34,14 +34,14 @@ func (s *ArrayStack[E]) Peek() (E, bool) {
 	return s.elems[len(s.elems)-1], true
 }
 
-func (s *ArrayStack[E]) Clear() {
+func (s *Stack[E]) Clear() {
 	s.elems = make([]E, 0)
 }
 
-func (s *ArrayStack[E]) Len() int {
+func (s *Stack[E]) Len() int {
 	return len(s.elems)
 }
 
-func (s *ArrayStack[E]) String() string {
+func (s *Stack[E]) String() string {
 	return ""
 }
