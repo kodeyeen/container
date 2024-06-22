@@ -17,8 +17,8 @@ func (d Dict[K, V]) Set(key K, val V) {
 	d[key] = val
 }
 
-func (d *Dict[K, V]) Delete(key K) {
-	delete(*d, key)
+func (d Dict[K, V]) Delete(key K) {
+	delete(d, key)
 }
 
 func (d Dict[K, V]) All() iter.Seq2[K, V] {
@@ -31,8 +31,8 @@ func (d Dict[K, V]) All() iter.Seq2[K, V] {
 	}
 }
 
-func (d *Dict[K, V]) Clear() {
-	clear(*d)
+func (d Dict[K, V]) Clear() {
+	clear(d)
 }
 
 func (d Dict[K, V]) Len() int {
