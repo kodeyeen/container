@@ -38,3 +38,7 @@ func (d *Dict[K, V]) Clear() {
 func (d Dict[K, V]) Len() int {
 	return len(d)
 }
+
+func (d Dict[K, V]) String() string {
+	return ""
+}
