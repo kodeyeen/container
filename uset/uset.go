@@ -1,37 +1,37 @@
-package set
+package uset
 
 import (
 	"iter"
 )
 
-type Set[E comparable] struct {
+type USet[E comparable] struct {
 	elems map[E]struct{}
 }
 
-func New[E comparable](capacity int) *Set[E] {
-	return &Set[E]{
+func New[E comparable](capacity int) *USet[E] {
+	return &USet[E]{
 		elems: make(map[E]struct{}, capacity),
 	}
 }
 
-func (s *Set[E]) Add(elems ...E) {
+func (s *USet[E]) Add(elems ...E) {
 	for _, elem := range elems {
 		s.elems[elem] = struct{}{}
 	}
 }
 
-func (s *Set[E]) Remove(elems ...E) {
+func (s *USet[E]) Remove(elems ...E) {
 	for _, elem := range elems {
 		delete(s.elems, elem)
 	}
 }
 
-func (s *Set[E]) Contains(elem E) bool {
+func (s *USet[E]) Contains(elem E) bool {
 	_, ok := s.elems[elem]
 	return ok
 }
 
-func (s *Set[E]) Union(other *Set[E]) *Set[E] {
+func (s *USet[E]) Union(other *USet[E]) *USet[E] {
 	result := New[E](s.Len() + other.Len())
 
 	for elem := range s.elems {
@@ -45,7 +45,7 @@ func (s *Set[E]) Union(other *Set[E]) *Set[E] {
 	return result
 }
 
-func (s *Set[E]) Intersection(other *Set[E]) *Set[E] {
+func (s *USet[E]) Intersection(other *USet[E]) *USet[E] {
 	result := New[E](s.Len() + other.Len())
 
 	for elem := range other.elems {
@@ -57,7 +57,7 @@ func (s *Set[E]) Intersection(other *Set[E]) *Set[E] {
 	return result
 }
 
-func (s *Set[E]) Difference(other *Set[E]) *Set[E] {
+func (s *USet[E]) Difference(other *USet[E]) *USet[E] {
 	result := New[E](s.Len())
 
 	for elem := range s.elems {
@@ -69,7 +69,7 @@ func (s *Set[E]) Difference(other *Set[E]) *Set[E] {
 	return result
 }
 
-func (s *Set[E]) IsSubSet(other *Set[E]) bool {
+func (s *USet[E]) IsSubSet(other *USet[E]) bool {
 	for elem := range s.elems {
 		if !other.Contains(elem) {
 			return false
@@ -79,7 +79,7 @@ func (s *Set[E]) IsSubSet(other *Set[E]) bool {
 	return true
 }
 
-func (s *Set[E]) IsSuperSet(other *Set[E]) bool {
+func (s *USet[E]) IsSuperSet(other *USet[E]) bool {
 	for elem := range other.elems {
 		if !s.Contains(elem) {
 			return false
@@ -89,7 +89,7 @@ func (s *Set[E]) IsSuperSet(other *Set[E]) bool {
 	return true
 }
 
-func (s *Set[E]) All() iter.Seq[E] {
+func (s *USet[E]) All() iter.Seq[E] {
 	return func(yield func(E) bool) {
 		for elem := range s.elems {
 			if !yield(elem) {
@@ -99,14 +99,14 @@ func (s *Set[E]) All() iter.Seq[E] {
 	}
 }
 
-func (s *Set[E]) Clear() {
+func (s *USet[E]) Clear() {
 	clear(s.elems)
 }
 
-func (s *Set[E]) Len() int {
+func (s *USet[E]) Len() int {
 	return len(s.elems)
 }
 
-func (s *Set[E]) String() string {
+func (s *USet[E]) String() string {
 	return ""
 }
