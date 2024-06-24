@@ -23,8 +23,8 @@ func (m UMap[K, V]) Delete(key K) {
 
 func (m UMap[K, V]) All() iter.Seq2[K, V] {
 	return func(yield func(K, V) bool) {
-		for k, v := range m {
-			if !yield(k, v) {
+		for key, val := range m {
+			if !yield(key, val) {
 				return
 			}
 		}
