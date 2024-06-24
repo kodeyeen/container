@@ -9,7 +9,7 @@ type Container[E any] interface {
 	fmt.Stringer
 }
 
-type Dict[K comparable, V any] interface {
+type Map[K comparable, V any] interface {
 	Get(key K) (val V, ok bool)
 	Set(key K, val V)
 	Delete(key K)
