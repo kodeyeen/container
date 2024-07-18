@@ -2,7 +2,7 @@ package container
 
 import "fmt"
 
-type Container[E any] interface {
+type Container interface {
 	Clear()
 	Len() int
 
@@ -14,7 +14,7 @@ type Map[K comparable, V any] interface {
 	Set(key K, val V)
 	Delete(key K)
 
-	Container[V]
+	Container
 }
 
 type Set[E comparable] interface {
@@ -22,7 +22,7 @@ type Set[E comparable] interface {
 	Remove(elems ...E)
 	Contains(elem E) bool
 
-	Container[E]
+	Container
 }
 
 type Queue[E any] interface {
@@ -30,7 +30,7 @@ type Queue[E any] interface {
 	Dequeue() (elem E, ok bool)
 	Peek() (elem E, ok bool)
 
-	Container[E]
+	Container
 }
 
 type Stack[E any] interface {
@@ -38,5 +38,5 @@ type Stack[E any] interface {
 	Pop() (elem E, ok bool)
 	Peek() (elem E, ok bool)
 
-	Container[E]
+	Container
 }
