@@ -32,9 +32,7 @@ func main() {
 		fmt.Printf("Minimum value is %d\n", min)
 	}
 
-	for pq.Len() > 0 {
-		elem, _ := pq.Dequeue()
-
+	for elem := range pq.All() {
 		fmt.Println(elem)
 	}
 }
