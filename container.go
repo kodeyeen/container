@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+type Comparator[T any] func(x, y T) int
+
 type Container[E any] interface {
 	Clear()
 	Len() int
