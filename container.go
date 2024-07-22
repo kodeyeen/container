@@ -44,3 +44,10 @@ type Stack[E any] interface {
 
 	Container[E]
 }
+
+type Tree[V any] interface {
+	Insert(value V)
+	Delete(value V)
+
+	Container[V]
+}
