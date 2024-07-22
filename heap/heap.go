@@ -5,14 +5,14 @@ import (
 )
 
 type Heap[E any] struct {
-	elems      []E
-	comparator container.Comparator[E]
+	elems []E
+	cmp   container.Comparator[E]
 }
 
 func New[E any](comparator container.Comparator[E]) *Heap[E] {
 	return &Heap[E]{
-		elems:      make([]E, 0),
-		comparator: comparator,
+		elems: make([]E, 0),
+		cmp:   comparator,
 	}
 }
 
@@ -60,7 +60,7 @@ func (h *Heap[E]) Peek() (E, bool) {
 }
 
 func (h *Heap[E]) less(i, j int) bool {
-	return h.comparator(h.elems[i], h.elems[j]) == -1
+	return h.cmp(h.elems[i], h.elems[j]) == -1
 }
 
 func (h *Heap[E]) swap(i, j int) {
