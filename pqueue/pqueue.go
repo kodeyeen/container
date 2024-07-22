@@ -47,6 +47,18 @@ func (pq *PQueue[E]) Len() int {
 	return pq.heap.Len()
 }
 
+func (pq *PQueue[E]) All() iter.Seq[E] {
+	return func(yield func(E) bool) {
+		for pq.Len() > 0 {
+			elem, _ := pq.Dequeue()
+
+			if !yield(elem) {
+				return
+			}
+		}
+	}
+}
+
 func (pq *PQueue[E]) String() string {
 	return ""
 }
