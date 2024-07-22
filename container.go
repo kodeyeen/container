@@ -50,7 +50,7 @@ type Stack[E any] interface {
 
 type Tree[V any] interface {
 	Insert(values ...V)
-	Delete(value V)
+	Delete(values ...V)
 
 	Container[V]
 }
