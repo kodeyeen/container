@@ -1,8 +1,10 @@
 package container
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type Container interface {
+type Container[E any] interface {
 	Clear()
 	Len() int
 
@@ -14,7 +16,7 @@ type Map[K comparable, V any] interface {
 	Set(key K, val V)
 	Delete(key K)
 
-	Container
+	Container[V]
 }
 
 type Set[E comparable] interface {
@@ -22,7 +24,7 @@ type Set[E comparable] interface {
 	Remove(elems ...E)
 	Contains(elem E) bool
 
-	Container
+	Container[E]
 }
 
 type Queue[E any] interface {
@@ -30,7 +32,7 @@ type Queue[E any] interface {
 	Dequeue() (elem E, ok bool)
 	Peek() (elem E, ok bool)
 
-	Container
+	Container[E]
 }
 
 type Stack[E any] interface {
@@ -38,5 +40,5 @@ type Stack[E any] interface {
 	Pop() (elem E, ok bool)
 	Peek() (elem E, ok bool)
 
-	Container
+	Container[E]
 }
