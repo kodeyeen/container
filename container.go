@@ -2,6 +2,7 @@ package container
 
 import (
 	"fmt"
+	"iter"
 )
 
 type Comparator[T any] func(x, y T) int
@@ -9,6 +10,8 @@ type Comparator[T any] func(x, y T) int
 type Container[E any] interface {
 	Clear()
 	Len() int
+	Contains(E) bool
+	All() iter.Seq[E]
 
 	fmt.Stringer
 }
