@@ -1,8 +1,8 @@
 package pqueue
 
 import (
+	"github.com/kodeyeen/container"
 	"github.com/kodeyeen/container/heap"
-	"github.com/kodeyeen/container/internal/cmp"
 )
 
 type PQueue[E comparable] struct {
@@ -10,7 +10,7 @@ type PQueue[E comparable] struct {
 }
 
 // New creates a priority queue.
-func New[E comparable](comparator cmp.Comparator[E]) *PQueue[E] {
+func New[E comparable](comparator container.Comparator[E]) *PQueue[E] {
 	return &PQueue[E]{
 		heap: heap.New(comparator),
 	}

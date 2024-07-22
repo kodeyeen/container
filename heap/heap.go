@@ -1,15 +1,15 @@
 package heap
 
 import (
-	"github.com/kodeyeen/container/internal/cmp"
+	"github.com/kodeyeen/container"
 )
 
 type Heap[E any] struct {
 	elems      []E
-	comparator cmp.Comparator[E]
+	comparator container.Comparator[E]
 }
 
-func New[E any](comparator cmp.Comparator[E]) *Heap[E] {
+func New[E any](comparator container.Comparator[E]) *Heap[E] {
 	return &Heap[E]{
 		elems:      make([]E, 0),
 		comparator: comparator,
